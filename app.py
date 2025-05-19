@@ -8,7 +8,7 @@ import unicodedata
 app = Flask(__name__)
 
 # Spoonacular API Key
-API_KEY = 'a136ea1488074646a8e1b0eba8ba8419' 
+API_KEY = 'a136ea1488074646a8e1b0eba8ba8419'  # Thay bằng API key của bạn
 
 # Hàm bỏ dấu thanh để lọc tên tiếng Việt
 def remove_accents(text):
@@ -57,7 +57,7 @@ ingredient_translations = {
     'peanut': {'vietnamese': 'Đậu phộng', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/peanuts.jpg'},
     'sesame_oil': {'vietnamese': 'Dầu mè', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/sesame-oil.jpg'},
     'oyster_sauce': {'vietnamese': 'Dầu hào', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/oyster-sauce.jpg'},
-    'rice_noodle': {'vietnamese': 'Bún', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/rice-noodles.jpg'},
+    'rice_noodle': {'vietnamese': 'Bún', 'image': 'https://www.hoidaubepaau.com/wp-content/uploads/2019/01/bun-soi-to.jpg'},
     'morning_glory': {'vietnamese': 'Rau muống', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/water-spinach.jpg'},
     'bitter_melon': {'vietnamese': 'Khổ qua', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/bitter-melon.jpg'},
     'daikon': {'vietnamese': 'Củ cải trắng', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/daikon.jpg'},
@@ -78,7 +78,7 @@ ingredient_translations = {
     'mung_bean': {'vietnamese': 'Đậu xanh', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/mung-beans.jpg'},
     'sticky_rice': {'vietnamese': 'Gạo nếp', 'image': 'https://caogam.vn/sites/default/files/styles/anh_og_image/public/2021-03/anh-gao-nep.jpg?itok=rmJdgbo6'},
     'vermicelli': {'vietnamese': 'Miến', 'image': 'https://cdn.tgdd.vn/Files/2017/06/27/997201/cach-phan-biet-va-su-dung-cac-loai-mien2_800x400.jpg'},
-    'pho_noodle': {'vietnamese': 'Bánh phở', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/rice-noodles.jpg'},
+    'pho_noodle': {'vietnamese': 'Bánh phở', 'image': 'https://th.bing.com/th/id/OIP.Vq5_eaIpMay9IxmgwPP8wQHaE8?rs=1&pid=ImgDetMain'},
     'rice_paper': {'vietnamese': 'Bánh tráng', 'image': 'https://truonghaifood.com/wp-content/uploads/2022/04/banh-trang-gao-tron-me-th-food-2.jpg'},
     'banana_leaf': {'vietnamese': 'Lá chuối', 'image': 'https://tse3.mm.bing.net/th/id/OIP.6P6_OSlpDIciIi5iRu786AHaEK?rs=1&pid=ImgDetMain'},
     'pork_belly': {'vietnamese': 'Thịt ba chỉ', 'image': 'https://spoonacular.com/cdn/ingredients_100x100/pork-belly.jpg'},
