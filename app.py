@@ -8,7 +8,7 @@ import unicodedata
 app = Flask(__name__)
 
 # Spoonacular API Key
-API_KEY = 'a136ea1488074646a8e1b0eba8ba8419'  # Thay bằng API key của bạn
+API_KEY = 'a136ea1488074646a8e1b0eba8ba8419'
 
 # Hàm bỏ dấu thanh để lọc tên tiếng Việt
 def remove_accents(text):
