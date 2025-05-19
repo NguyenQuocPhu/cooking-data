@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ứng Dụng Đề Xuất Món Ăn</title>
+    <title>{{ recipe.title }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Liên kết file CSS bổ sung -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100">
-    <nav class="bg-blue-500 text-white p-4">
-        <a href="/" class="mr-4 hover:underline">Trang Chủ</a>
-        <a href="/ingredients" class="mr-4 hover:underline">Nguyên Liệu</a>
-        <a href="/history" class="hover:underline">Lịch Sử</a>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">Ứng Dụng Món Ăn</a>
+        <div>
+            <a href="/">Trang Chủ</a>
+            <a href="/ingredients">Nguyên Liệu</a>
+            <a href="/history">Lịch Sử</a>
+        </div>
     </nav>
-    <div class="container mx-auto p-4">
-        <a href="/" class="bg-gray-500 text-white p-2 mb-4 inline-block rounded hover:bg-gray-600">Quay Lại</a>
-        <h1 class="text-3xl font-bold mb-4">{{ recipe.title }}</h1>
-        <!-- Hiển thị thông báo xác nhận nếu có -->
-        {% if message %}
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
-                {{ message }}
-            </div>
-        {% endif %}
+    <div class="container">
+        <a href="/" class="back-button">Quay lại</a>
+        <h1 class="text-3xl font-bold mb-4 text-center">{{ recipe.title }}</h1>
         {% if recipe.image %}
-            <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="w-full max-w-md mb-4 rounded">
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="w-full max-w-md mb-4 mx-auto block">
         {% endif %}
-        <h2 class="text-xl font-semibold">Thời gian nấu: {{ recipe.readyInMinutes }} phút</h2>
-        <h2 class="text-xl font-semibold mt-4">Nguyên liệu:</h2>
-        <ul class="list-disc pl-5">
-            {% for ing in recipe.extendedIngredients %}
-                <li>{{ ing.original }} ({{ ing.vietnamese }})</li>
+        <h2 class="text-xl font-semibold mb-2 text-center">Nguyên liệu</h2>
+        <ul class="list-disc pl-5 mb-4 text-left mx-auto max-w-prose">
+            {% for ingredient in recipe.extendedIngredients %}
+                <li>{{ ingredient.vietnamese | default(ingredient.name) }}: {{ ingredient.original }}</li>
             {% endfor %}
         </ul>
-        <h2 class="text-xl font-semibold mt-4">Hướng dẫn:</h2>
-        <div>{{ recipe.instructions | safe or 'Không có hướng dẫn chi tiết.' }}</div>
-        <form method="POST" action="/save_recipe/{{ recipe.id }}" class="mt-4">
+        <h2 class="text-xl font-semibold mb-2 text-center">Hướng dẫn</h2>
+        <div class="text-left mx-auto max-w-prose">{{ recipe.instructions | default("Không có hướng dẫn chi tiết.") | safe }}</div>
+        {% if message %}
+            <p class="text-green-600 mt-4 text-center">{{ message }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('save_recipe', id=recipe.id) }}" class="mt-4 text-center">
             <input type="hidden" name="ingredients" value="{{ request.args.get('ingredients', '') }}">
-            <button
-                type="submit"
-                class="bg-green-500 text-white p-2 rounded hover:bg-green-600"
-            >
-                Tôi sẽ nấu món này
-            </button>
+            <button type="submit" class="bg-orange-500 text-white p-2 rounded hover:bg-orange-600">Lưu món ăn</button>
         </form>
     </div>
 </body>
